@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Reset ─────────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply font-inter bg-cream text-ink;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sora font-bold leading-tight;
+  }
+
+  a {
+    @apply no-underline;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+  }
+
+  ::selection {
+    background: rgba(109, 76, 242, 0.25);
+  }
+}
+
+/* ─── Reusable Component Utilities ──────────────────────────────── */
+@layer components {
+  /* Layout containers */
+  .container-main {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 lg:py-28;
+  }
+
+  /* Glass morphism */
+  .glass-dark {
+    background: rgba(19, 42, 29, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-light {
+    background: rgba(248, 244, 234, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(19, 42, 29, 0.1);
+  }
+
+  /* Gradient text */
+  .text-gradient-brand {
+    background: linear-gradient(135deg, #6d4cf2 0%, #ff6472 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-sage {
+    background: linear-gradient(135deg, #22c55e 0%, #6d4cf2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Card hover lift */
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl;
+  }
+
+  /* Section label */
+  .section-label {
+    @apply inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase;
+  }
+
+  /* Glow effect */
+  .glow-brand {
+    box-shadow: 0 0 0 1px rgba(109, 76, 242, 0.2),
+      0 8px 40px rgba(109, 76, 242, 0.25);
+  }
+
+  /* Dot background pattern */
+  .bg-dots-ink {
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.07) 1px,
+      transparent 1px
+    );
+    background-size: 28px 28px;
+  }
+
+  .bg-dots-cream {
+    background-image: radial-gradient(
+      circle,
+      rgba(19, 42, 29, 0.06) 1px,
+      transparent 1px
+    );
+    background-size: 28px 28px;
+  }
+}
+
+/* ─── Animation Delay Utilities ──────────────────────────────────── */
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+  .animation-delay-700 {
+    animation-delay: 700ms;
+  }
+  .animation-delay-800 {
+    animation-delay: 800ms;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ─── Dark Mode Overrides ────────────────────────────────────────── */
+@layer base {
+  html.dark body {
+    @apply bg-[#0F172A] text-[#F8FAFC];
+  }
+  html.dark .bg-white {
+    @apply bg-[#1E293B] !important;
+  }
+  html.dark .bg-\[\#F8F4EA\], html.dark .bg-cream, html.dark .bg-brand-50, html.dark .bg-brand-50\/50, html.dark .bg-brand-50\/20, html.dark .bg-brand-50\/30, html.dark .bg-brand-50\/40, html.dark .bg-brand-50\/60, html.dark .bg-brand-50\/70, html.dark .bg-brand-50\/80, html.dark .bg-brand-50\/90 {
+    @apply bg-[#0F172A] !important;
+  }
+  html.dark .bg-\[\#132A1D\]\/\[0\.02\], html.dark .bg-\[\#132A1D\]\/5, html.dark .bg-brand-100 {
+    @apply bg-[#334155] !important;
+  }
+  html.dark .text-ink, html.dark .text-\[\#132A1D\] {
+    @apply text-[#F8FAFC] !important;
+  }
+  html.dark .text-\[\#132A1D\]\/45, html.dark .text-\[\#132A1D\]\/50, html.dark .text-\[\#132A1D\]\/55, html.dark .text-\[\#132A1D\]\/70, html.dark .text-\[\#132A1D\]\/80 {
+    @apply text-[#CBD5E1] !important;
+  }
+  html.dark .border-\[\#132A1D\]\/6, html.dark .border-\[\#132A1D\]\/8, html.dark .border-\[\#132A1D\]\/10, html.dark .border-\[\#132A1D\]\/12, html.dark .border-\[\#132A1D\]\/15, html.dark .border-\[\#132A1D\]\/20, html.dark .border-\[\#132A1D\]\/25 {
+    @apply border-[#475569] !important;
+  }
+  html.dark .shadow-\[0_4px_20px_-4px_rgba\(19\,42\,29\,0\.06\)\,0_1px_3px_rgba\(19\,42\,29\,0\.04\)\] {
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+  }
+}
