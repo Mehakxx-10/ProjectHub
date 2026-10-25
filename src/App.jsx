@@ -13,6 +13,7 @@ import Reports       from './pages/Reports.jsx';
 import Notifications from './pages/Notifications.jsx';
 import Settings      from './pages/Settings.jsx';
 import Profile       from './pages/Profile.jsx';
+import GitHubExplorer from './pages/GitHubExplorer.jsx';
 import AppLayout     from './components/layout/AppLayout.jsx';
 import ProtectedRoute from './components/auth/ProtectedRoute.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
@@ -44,6 +45,7 @@ function App() {
               <Route path="/notifications"        element={<Notifications />}  />
               <Route path="/settings"             element={<Settings />}       />
               <Route path="/profile"              element={<Profile />}        />
+              <Route path="/explorer"             element={<GitHubExplorer />} />
             </Route>
           </Route>
         </Routes>

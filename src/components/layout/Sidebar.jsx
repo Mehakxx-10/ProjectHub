@@ -89,6 +89,15 @@ function IconSettings() {
   );
 }
 
+function IconExplorer() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="9" cy="9" r="7" />
+      <path d="M14 14l5 5" />
+    </svg>
+  );
+}
+
 function IconProfile() {
   return (
     <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -113,6 +122,7 @@ const MENU_ITEMS = [
   { label: 'Team',      to: '/team',      Icon: IconTeam      },
   { label: 'Calendar',  to: '/calendar',  Icon: IconCalendar  },
   { label: 'Reports',   to: '/reports',   Icon: IconReports   },
+  { label: 'Explorer',  to: '/explorer',  Icon: IconExplorer  },
 ];
 
 const ACCOUNT_ITEMS = [
