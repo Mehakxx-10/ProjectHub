@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from 'react';
 import { initialProjects } from '../data/projects.js';
 import { initialTasks } from '../data/tasks.js';
 import { uid } from '../utils/helpers.js';
+import { useToast } from './ToastContext.jsx';
 
 const ProjectContext = createContext(null);
 
@@ -14,6 +15,7 @@ const PROJECT_COLORS = ['#6D4CF2', '#3FA66B', '#F5B833', '#F2685A', '#132A1D'];
 export function ProjectProvider({ children }) {
   const [projects, setProjects] = useState(initialProjects);
   const [tasks, setTasks] = useState(initialTasks);
+  const { showToast } = useToast();
 
   /* ── Project CRUD Operations ────────────────────────────────────── */
 
@@ -38,6 +40,7 @@ export function ProjectProvider({ children }) {
     if (!newProject.id) newProject.id = uid();
 
     setProjects((prev) => [newProject, ...prev]);
+    showToast(`Project "${newProject.name}" created`, { tone: 'success' });
     return newProject;
   }
 
@@ -56,9 +59,11 @@ export function ProjectProvider({ children }) {
   }
 
   function deleteProject(id) {
+    const removed = projects.find((p) => p.id === id);
     setProjects((prev) => prev.filter((p) => p.id !== id));
     // Also remove associated tasks
     setTasks((prev) => prev.filter((t) => t.projectId !== id));
+    showToast(`Project "${removed?.name ?? ''}" deleted`, { tone: 'info' });
   }
 
   function getProjectById(id) {
@@ -108,6 +113,7 @@ export function ProjectProvider({ children }) {
       );
     }
 
+    showToast(`Task "${newTask.title}" added`, { tone: 'success' });
     return newTask;
   }
 
@@ -124,7 +130,9 @@ export function ProjectProvider({ children }) {
   }
 
   function deleteTask(id) {
+    const removed = tasks.find((t) => t.id === id);
     setTasks((prev) => prev.filter((t) => t.id !== id));
+    showToast(`Task "${removed?.title ?? ''}" deleted`, { tone: 'info' });
   }
 
   return (
